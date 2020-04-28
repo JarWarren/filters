@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     var context = CIContext()
-    var filterOne = CIFilter(name: "CITemperatureAndTint") // inputNeutral, inputTargetNeutral
-    var filterTwo = CIFilter(name: "CIVibrance") // amount
-    var filterThree = CIFilter(name: "CIHueAdjust") // angle
-    var filterFour = CIFilter(name: "CISharpenLuminance") // sharpness
-    var currentImage = #imageLiteral(resourceName: "sample0")
+    var temperatureAndTintFilter = CIFilter(name: "CITemperatureAndTint") // inputNeutral, inputTargetNeutral
+    var vibranceFilter = CIFilter(name: "CIVibrance") // amount
+    var hueFilter = CIFilter(name: "CIHueAdjust") // angle
+    var sharpnessFilter = CIFilter(name: "CISharpenLuminance") // sharpness
+    var currentImage: CIImage!
     
     // MARK: - Outlets
     
@@ -27,22 +27,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSliders()
+        setupImage()
+        setupFilters()
     }
     
     // MARK: - Private Methods
     
-    private func setupSliders() {
-        let startingImage = CIImage(image: currentImage)
+    private func setupImage() {
+        
+        let startingImage = #imageLiteral(resourceName: "sample0")
+        currentImage = CIImage(image: startingImage)
+    }
+    
+    private func setupFilters() {
         
         // temperature and tint
-        filterOne?.setValue(startingImage, forKey: kCIInputImageKey)
+        temperatureAndTintFilter?.setValue(currentImage, forKey: kCIInputImageKey)
         
         // vibrance
-        filterTwo?.setValue(startingImage, forKey: kCIInputImageKey)
-        filterTwo?.setValue(0, forKey: kCIInputAmountKey)
-        filterThree?.setValue(startingImage, forKey: kCIInputImageKey)
-        filterFour?.setValue(startingImage, forKey: kCIInputImageKey)
+        vibranceFilter?.setValue(currentImage, forKey: kCIInputImageKey)
+        vibranceFilter?.setValue(0, forKey: kCIInputAmountKey)
+        
+        // hue
+        hueFilter?.setValue(currentImage, forKey: kCIInputImageKey)
+        
+        // sharpness
+        sharpnessFilter?.setValue(currentImage, forKey: kCIInputImageKey)
     }
     
     /**
@@ -56,8 +66,8 @@ class ViewController: UIViewController {
      */
     private func processTemperature(_ value: Float) {
         let temperature = CIVector(x: CGFloat(value))
-        filterOne?.setValue(temperature, forKey: "inputTargetNeutral")
-        guard let output = filterOne?.outputImage,
+        temperatureAndTintFilter?.setValue(temperature, forKey: "inputTargetNeutral")
+        guard let output = temperatureAndTintFilter?.outputImage,
             let processedImage = context.createCGImage(output, from: output.extent) else { return }
         filterImageView.image = UIImage(cgImage: processedImage)
     }
@@ -66,8 +76,8 @@ class ViewController: UIViewController {
      Vibrance is measured from -1 - 1.
      */
     private func processVibrance(_ value: Float) {
-        filterTwo?.setValue(value, forKey: kCIInputAmountKey)
-        guard let output = filterTwo?.outputImage,
+        vibranceFilter?.setValue(value, forKey: kCIInputAmountKey)
+        guard let output = vibranceFilter?.outputImage,
             let processed = context.createCGImage(output, from: output.extent) else { return }
         filterImageView.image = UIImage(cgImage: processed)
     }
