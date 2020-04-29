@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: write my own ImagePicker and allow them to choose allowsEditing
+
 public protocol ImagePickerDelegate: class {
     func didSelect(image: UIImage?)
 }

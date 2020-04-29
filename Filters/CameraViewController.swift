@@ -11,7 +11,7 @@ import Metal
 
 class CameraViewController: UIViewController {
     
-    @IBOutlet weak var filterImageView: UIImageView!
+    @IBOutlet weak var filterImageView: FilterImageView!
     
     var imagePicker: ImagePicker!
     let chain = ChainFilter(filters: .temperature,
@@ -21,6 +21,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        filterImageView.delegate = self
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         chain.setImage(#imageLiteral(resourceName: "sample0"))
         chain.delegate = self
@@ -44,6 +45,16 @@ class CameraViewController: UIViewController {
     
 }
 
+extension CameraViewController: FilterImageViewDelegate {
+    func didPressImageView() {
+        filterImageView.image = chain.originalImage
+    }
+    
+    func didReleaseImageView() {
+        filterImageView.image = chain.processedImage
+    }
+}
+
 extension CameraViewController: ChainFilterDelegate {
     
     func imageDidUpdate(_ image: UIImage?) {
@@ -58,6 +69,7 @@ extension CameraViewController: ImagePickerDelegate {
         }
     }
 }
+
 
 /*
  class EditingViewController: UIViewController, MTKViewDelegate {

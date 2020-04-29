@@ -16,10 +16,16 @@ protocol ChainFilterDelegate: AnyObject {
 class ChainFilter {
     
     weak var delegate: ChainFilterDelegate?
+    var originalImage: UIImage?
+    var processedImage: UIImage? {
+        didSet {
+            delegate?.imageDidUpdate(processedImage)
+        }
+    }
     
     private var filters = [CIFilter]()
     private var indices = [String: Int]()
-    private var image: CIImage!
+    private var originalCIImage: CIImage!
     
     init(filters: Filter...) {
         for (i, filter) in filters.enumerated() {
@@ -32,8 +38,9 @@ class ChainFilter {
     }
     
     func setImage(_ image: UIImage) {
-        self.image = CIImage(image: image)
-        self.filters.first?.setValue(self.image, forKey: "inputImage")
+        self.originalImage = image
+        self.originalCIImage = CIImage(image: image)
+        self.filters.first?.setValue(self.originalCIImage, forKey: "inputImage")
         self.updateImage()
     }
     
@@ -56,8 +63,8 @@ class ChainFilter {
         }
 
         let final = filters.last?.outputImage ?? CIImage.empty()
-        let outputImage = context.createCGImage(final, from: self.image.extent)!
+        let outputImage = context.createCGImage(final, from: self.originalCIImage.extent)!
         
-        delegate?.imageDidUpdate(UIImage(cgImage: outputImage))
+        self.processedImage = UIImage(cgImage: outputImage)
     }
 }
