@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreImage
 
 class ViewController: UIViewController {
     
@@ -88,15 +87,15 @@ class ViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func filterSliderValueChanged(_ sender: UISlider) { // temperature
+    @IBAction func temperatureSliderValueChanged(_ sender: UISlider) { // temperature
         processTemperature(sender.value)
     }
     
-    @IBAction func sliderTwoValueChanged(_ sender: UISlider) { // vibrance
+    @IBAction func vibranceSliderValueChanged(_ sender: UISlider) { // vibrance
         processVibrance(sender.value)
     }
     
-    @IBAction func sliderThreeValueChanged(_ sender: UISlider) { // hue
+    @IBAction func hueSliderValueChanged(_ sender: UISlider) { // hue
         processHue(sender.value)
     }
 }

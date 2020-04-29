@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Filter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Filters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FilterViewController" customModule="Filters" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6500" minValue="3500" maxValue="14000" translatesAutoresizingMaskIntoConstraints="NO" id="xVq-Vr-11K">
                                                 <rect key="frame" x="-2" y="20.5" width="370" height="94"/>
                                                 <connections>
-                                                    <action selector="filterSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="N3J-7I-KbM"/>
+                                                    <action selector="temperatureSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ciw-Wx-2By"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -55,7 +55,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="61c-Jc-TR2">
                                                 <rect key="frame" x="-2" y="20.5" width="370" height="93.5"/>
                                                 <connections>
-                                                    <action selector="sliderTwoValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="pu2-5g-iXY"/>
+                                                    <action selector="vibranceSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="GGN-DF-nUH"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -72,7 +72,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-iB-TD4">
                                                 <rect key="frame" x="-2" y="20.5" width="370" height="94"/>
                                                 <connections>
-                                                    <action selector="sliderThreeValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tio-MN-Kr8"/>
+                                                    <action selector="hueSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1h6-Vq-Fys"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -93,7 +93,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="filterImageView" destination="xpL-lq-PoH" id="MwL-pv-W7R"/>
+                        <outlet property="filterImageView" destination="xpL-lq-PoH" id="hsc-pK-XlX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
