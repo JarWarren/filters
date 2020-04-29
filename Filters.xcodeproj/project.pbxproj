@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		7E4B33A62457538F00D21F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B33A52457538F00D21F18 /* AppDelegate.swift */; };
 		7E4B33A82457538F00D21F18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B33A72457538F00D21F18 /* SceneDelegate.swift */; };
-		7E4B33AA2457538F00D21F18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B33A92457538F00D21F18 /* ViewController.swift */; };
 		7E4B33AD2457538F00D21F18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4B33AB2457538F00D21F18 /* Main.storyboard */; };
 		7E4B33AF2457539200D21F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E4B33AE2457539200D21F18 /* Assets.xcassets */; };
-		7EEFBC4F2459173B0010664D /* CIFilterChaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFBC4E2459173B0010664D /* CIFilterChaining.swift */; };
+		7E62A1F8245A07CF00BEF349 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62A1F7245A07CF00BEF349 /* Filter.swift */; };
+		7E62A1FA245A07FD00BEF349 /* CompoundFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62A1F9245A07FD00BEF349 /* CompoundFilter.swift */; };
 		7EEFBC5124591BDD0010664D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFBC5024591BDD0010664D /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +20,11 @@
 		7E4B33A22457538F00D21F18 /* Filters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E4B33A52457538F00D21F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E4B33A72457538F00D21F18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E4B33A92457538F00D21F18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E4B33AC2457538F00D21F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E4B33AE2457539200D21F18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E4B33B32457539200D21F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EEFBC4E2459173B0010664D /* CIFilterChaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIFilterChaining.swift; sourceTree = "<group>"; };
+		7E62A1F7245A07CF00BEF349 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		7E62A1F9245A07FD00BEF349 /* CompoundFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundFilter.swift; sourceTree = "<group>"; };
 		7EEFBC5024591BDD0010664D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,9 +58,9 @@
 		7E4B33A42457538F00D21F18 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				7E4B33A92457538F00D21F18 /* ViewController.swift */,
 				7EEFBC5024591BDD0010664D /* FilterViewController.swift */,
-				7EEFBC4E2459173B0010664D /* CIFilterChaining.swift */,
+				7E62A1F9245A07FD00BEF349 /* CompoundFilter.swift */,
+				7E62A1F7245A07CF00BEF349 /* Filter.swift */,
 				7E4B33AB2457538F00D21F18 /* Main.storyboard */,
 				7E4B33BB2458EC3600D21F18 /* Resources */,
 			);
@@ -170,9 +170,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EEFBC4F2459173B0010664D /* CIFilterChaining.swift in Sources */,
-				7E4B33AA2457538F00D21F18 /* ViewController.swift in Sources */,
+				7E62A1FA245A07FD00BEF349 /* CompoundFilter.swift in Sources */,
 				7E4B33A62457538F00D21F18 /* AppDelegate.swift in Sources */,
+				7E62A1F8245A07CF00BEF349 /* Filter.swift in Sources */,
 				7E4B33A82457538F00D21F18 /* SceneDelegate.swift in Sources */,
 				7EEFBC5124591BDD0010664D /* FilterViewController.swift in Sources */,
 			);
