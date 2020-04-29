@@ -1,5 +1,5 @@
 //
-//  FilterViewController.swift
+//  CameraViewController.swift
 //  Filters
 //
 //  Created by Jared Warren on 4/28/20.
@@ -9,10 +9,11 @@
 import UIKit
 import Metal
 
-class FilterViewController: UIViewController {
+class CameraViewController: UIViewController {
     
     @IBOutlet weak var filterImageView: UIImageView!
     
+    var imagePicker: ImagePicker!
     let chain = ChainFilter(filters: .temperature,
                                 .vibrance,
                                 .hue)
@@ -20,8 +21,13 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
         chain.setImage(#imageLiteral(resourceName: "sample0"))
         chain.delegate = self
+    }
+    
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        imagePicker.present(from: self.view)
     }
     
     @IBAction func temperatureSliderValueChanged(_ sender: UISlider) {
@@ -38,10 +44,18 @@ class FilterViewController: UIViewController {
     
 }
 
-extension FilterViewController: ChainFilterDelegate {
+extension CameraViewController: ChainFilterDelegate {
     
     func imageDidUpdate(_ image: UIImage?) {
         filterImageView.image = image
+    }
+}
+
+extension CameraViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let image = image {
+            chain.setImage(image)
+        }
     }
 }
 

@@ -34,6 +34,7 @@ class ChainFilter {
     func setImage(_ image: UIImage) {
         self.image = CIImage(image: image)
         self.filters.first?.setValue(self.image, forKey: "inputImage")
+        self.updateImage()
     }
     
     func updateFilter(_ filter: Filter, value: Float) {
