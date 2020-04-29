@@ -13,32 +13,32 @@ class FilterViewController: UIViewController {
     
     @IBOutlet weak var filterImageView: UIImageView!
     
-    let filter = CompoundFilter(filters: .temperature,
+    let chain = ChainFilter(filters: .temperature,
                                 .vibrance,
                                 .hue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filter.setImage(#imageLiteral(resourceName: "sample0"))
-        filter.delegate = self
+        chain.setImage(#imageLiteral(resourceName: "sample0"))
+        chain.delegate = self
     }
     
     @IBAction func temperatureSliderValueChanged(_ sender: UISlider) {
-        filter.updateFilter(.temperature, value: sender.value)
+        chain.updateFilter(.temperature, value: sender.value)
     }
     
     @IBAction func vibranceSliderValueChanged(_ sender: UISlider) {
-        filter.updateFilter(.vibrance, value: sender.value)
+        chain.updateFilter(.vibrance, value: sender.value)
     }
     
     @IBAction func hueSliderValueChanged(_ sender: UISlider) {
-        filter.updateFilter(.hue, value: sender.value)
+        chain.updateFilter(.hue, value: sender.value)
     }
     
 }
 
-extension FilterViewController: CompoundFilterDelegate {
+extension FilterViewController: ChainFilterDelegate {
     
     func imageDidUpdate(_ image: UIImage?) {
         filterImageView.image = image

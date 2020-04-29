@@ -1,5 +1,5 @@
 //
-//  CompoundFilter.swift
+//  ChainFilter.swift
 //  Filters
 //
 //  Created by Jared Warren on 4/29/20.
@@ -9,13 +9,13 @@
 import UIKit
 import Metal
 
-protocol CompoundFilterDelegate: AnyObject {
+protocol ChainFilterDelegate: AnyObject {
     func imageDidUpdate(_ image: UIImage?)
 }
 
-class CompoundFilter {
+class ChainFilter {
     
-    weak var delegate: CompoundFilterDelegate?
+    weak var delegate: ChainFilterDelegate?
     
     private var filters = [CIFilter]()
     private var indices = [String: Int]()
