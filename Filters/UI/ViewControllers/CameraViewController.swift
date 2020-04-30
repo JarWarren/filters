@@ -14,6 +14,10 @@ class CameraViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var filterImageView: FilterImageView!
+    @IBOutlet weak var temperatureSlider: UISlider!
+    @IBOutlet weak var vibranceSlider: UISlider!
+    @IBOutlet weak var hueSlider: UISlider!
+    @IBOutlet weak var sharpnessSlider: UISlider!
     
     // MARK: - Properties
     
@@ -35,6 +39,14 @@ class CameraViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func undoButtonTapped(_ sender: Any) {
+        chain.resetFilters()
+        temperatureSlider.value = 6500
+        vibranceSlider.value = 0
+        hueSlider.value = 0
+        sharpnessSlider.value = 0.4
+    }
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
         photoPicker.present(from: self.view)

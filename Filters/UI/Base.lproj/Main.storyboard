@@ -69,7 +69,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-3" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-iB-TD4">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-iB-TD4">
                                                 <rect key="frame" x="22" y="0.0" width="346" height="60"/>
                                                 <connections>
                                                     <action selector="hueSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1h6-Vq-Fys"/>
@@ -86,7 +86,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.40000000000000002" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="XKq-cd-M32">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.40000000000000002" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="XKq-cd-M32">
                                                 <rect key="frame" x="48" y="0.0" width="320" height="60"/>
                                                 <connections>
                                                     <action selector="sharpnessSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z0b-cm-1Zb"/>
@@ -110,6 +110,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="JO6-Ph-iep">
+                        <barButtonItem key="leftBarButtonItem" systemItem="undo" id="bgx-Wh-jRf">
+                            <connections>
+                                <action selector="undoButtonTapped:" destination="BYZ-38-t0r" id="R9l-Hs-uLe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="k5L-4r-hVU">
                             <connections>
                                 <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="Eh4-8Y-9UQ"/>
@@ -118,6 +123,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterImageView" destination="xpL-lq-PoH" id="hsc-pK-XlX"/>
+                        <outlet property="hueSlider" destination="5eg-iB-TD4" id="ilx-NI-QKK"/>
+                        <outlet property="sharpnessSlider" destination="XKq-cd-M32" id="UX4-oo-Bpl"/>
+                        <outlet property="temperatureSlider" destination="xVq-Vr-11K" id="GJ7-yT-yif"/>
+                        <outlet property="vibranceSlider" destination="61c-Jc-TR2" id="2zN-TA-ICH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

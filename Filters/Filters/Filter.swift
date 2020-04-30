@@ -45,19 +45,6 @@ enum Filter: String {
         }
     }
     
-    func updatedValue(_ value: Float) -> Any {
-        switch self {
-        case .hue:
-            return value
-        case .sharpness:
-            return value
-        case .temperature:
-            return CIVector(x: CGFloat(value))
-        case .vibrance:
-            return value
-        }
-    }
-    
     func initialValue() -> Any {
         switch self {
         case .hue:
@@ -68,6 +55,19 @@ enum Filter: String {
             return CIVector(x: CGFloat(6500))
         case .vibrance:
             return Float(0)
+        }
+    }
+    
+    func updatedValue(_ value: Float) -> Any {
+        switch self {
+        case .hue:
+            return value
+        case .sharpness:
+            return value
+        case .temperature:
+            return CIVector(x: CGFloat(value))
+        case .vibrance:
+            return value
         }
     }
 }

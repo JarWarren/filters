@@ -57,6 +57,15 @@ class ChainFilter {
         updateImage()
     }
     
+    func resetFilters() {
+        for cifilter in filters {
+            if let filter = Filter(rawValue: cifilter.name) {
+                cifilter.setValue(filter.initialValue(), forKey: filter.key)
+            }
+        }
+        delegate?.imageDidUpdate(originalImage)
+    }
+    
     // MARK: - Private Methods
     
     private func updateImage() {
