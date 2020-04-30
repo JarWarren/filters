@@ -50,6 +50,15 @@ class ChainFilter {
         updateImage()
     }
     
+    func resetFilters() {
+        for cifilter in filters {
+            if let filter = Filter(rawValue: cifilter.name) {
+                cifilter.setValue(filter.initialValue(), forKey: filter.key)
+            }
+        }
+        delegate?.imageDidUpdate(originalImage)
+    }
+    
     private func updateImage() {
         guard let device = MTLCreateSystemDefaultDevice() else { return }
         let context = CIContext(mtlDevice: device)
