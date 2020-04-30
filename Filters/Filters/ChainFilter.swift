@@ -9,11 +9,19 @@
 import UIKit
 import Metal
 
+/// Method for observing updates to the image being processed by a ChainFilter.
 protocol ChainFilterDelegate: AnyObject {
     func imageDidUpdate(_ image: UIImage?)
 }
 
+/**
+ Wrapper class around a series of CIFilters.
+ Pass one or more `Filter` into the initializer and conform to `ChainFilterDelegate`.
+ Call `setImage(_:)` to begin processing a `UIImage`.
+ */
 class ChainFilter {
+    
+    // MARK: - Properties
     
     weak var delegate: ChainFilterDelegate?
     var originalImage: UIImage?
@@ -27,6 +35,8 @@ class ChainFilter {
     private var indices = [String: Int]()
     private var originalCIImage: CIImage!
     
+    // MARK: - Initializers
+    
     init(filters: Filter...) {
         for (i, filter) in filters.enumerated() {
             if let ciFilter = filter.ciFilter() {
@@ -36,6 +46,8 @@ class ChainFilter {
             }
         }
     }
+    
+    // MARK: - Interface Methods
     
     func setImage(_ image: UIImage) {
         self.originalImage = image
@@ -58,6 +70,8 @@ class ChainFilter {
         }
         delegate?.imageDidUpdate(originalImage)
     }
+    
+    // MARK: - Private Methods
     
     private func updateImage() {
         guard let device = MTLCreateSystemDefaultDevice() else { return }

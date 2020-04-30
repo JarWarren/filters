@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Methods for observing when a `FilterImageView` is pressed or released by the user.
 protocol FilterImageViewDelegate: AnyObject {
     func didPressImageView()
     func didReleaseImageView()

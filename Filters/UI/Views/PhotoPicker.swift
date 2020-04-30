@@ -8,25 +8,28 @@
 
 import UIKit
 
+/// Methods for observing updates to a PhotoPicker.
 protocol PhotoPickerDelegate: AnyObject {
     func didFinishPicking(image: UIImage?)
     func readyToPresent(_ viewController: UIViewController)
 }
 
+/// Wrapper around `UIImagePickerController` which handles presentation and fetching the image.
 class PhotoPicker: NSObject, UINavigationControllerDelegate {
+    
+    // MARK: - Properties
     
     weak var delegate: PhotoPickerDelegate?
     var imagePickerController = UIImagePickerController()
+    
+    // MARK: - Initializers
     
     override init() {
         super.init()
         self.imagePickerController.delegate = self
     }
     
-    private func didFinishPicking(image: UIImage?) {
-        imagePickerController.dismiss(animated: true)
-        delegate?.didFinishPicking(image: image)
-    }
+    // MARK: - Interface Methods
     
     func present(from view: UIView) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -67,6 +70,13 @@ class PhotoPicker: NSObject, UINavigationControllerDelegate {
         }
         
         self.delegate?.readyToPresent(sheet)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func didFinishPicking(image: UIImage?) {
+        imagePickerController.dismiss(animated: true)
+        delegate?.didFinishPicking(image: image)
     }
 }
 
