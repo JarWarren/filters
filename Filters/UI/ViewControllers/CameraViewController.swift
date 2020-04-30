@@ -11,13 +11,19 @@ import Metal
 
 class CameraViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var filterImageView: FilterImageView!
+    
+    // MARK: - Properties
     
     let photoPicker = PhotoPicker()
     let chain = ChainFilter(filters: .temperature,
                                 .vibrance,
                                 .hue,
                                 .sharpness)
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,8 @@ class CameraViewController: UIViewController {
         chain.setImage(#imageLiteral(resourceName: "sample0"))
         chain.delegate = self
     }
+    
+    // MARK: - Actions
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
         photoPicker.present(from: self.view)

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Methods for allowing a FilterImageView to notify its delegate when the view is pressed or released.
 protocol FilterImageViewDelegate: AnyObject {
     func didPressImageView()
     func didReleaseImageView()
@@ -19,7 +20,11 @@ protocol FilterImageViewDelegate: AnyObject {
  */
 class FilterImageView: UIImageView {
     
+    // MARK: - Properties
+    
     weak var delegate: FilterImageViewDelegate?
+    
+    // MARK: - Override Methods
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.didPressImageView()

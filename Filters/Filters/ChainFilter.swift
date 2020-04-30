@@ -9,11 +9,14 @@
 import UIKit
 import Metal
 
+/// Method to display an image after it has been process by a ChainFilter.
 protocol ChainFilterDelegate: AnyObject {
     func imageDidUpdate(_ image: UIImage?)
 }
 
 class ChainFilter {
+    
+    // MARK: - Properties
     
     weak var delegate: ChainFilterDelegate?
     var originalImage: UIImage?
@@ -27,6 +30,8 @@ class ChainFilter {
     private var indices = [String: Int]()
     private var originalCIImage: CIImage!
     
+    // MARK: - Initializers
+    
     init(filters: Filter...) {
         for (i, filter) in filters.enumerated() {
             if let ciFilter = filter.ciFilter() {
@@ -36,6 +41,8 @@ class ChainFilter {
             }
         }
     }
+    
+    // MARK: - Interface Methods
     
     func setImage(_ image: UIImage) {
         self.originalImage = image
@@ -49,6 +56,8 @@ class ChainFilter {
         filters[index].setValue(filter.updatedValue(value), forKey: filter.key)
         updateImage()
     }
+    
+    // MARK: - Private Methods
     
     private func updateImage() {
         guard let device = MTLCreateSystemDefaultDevice() else { return }
