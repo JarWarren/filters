@@ -11,7 +11,7 @@ import Metal
 
 /// Method to display an image after it has been process by a ChainFilter.
 protocol ChainFilterDelegate: AnyObject {
-    func imageDidUpdate(_ image: UIImage?)
+    func imageDidUpdate(_ image: CIImage?)
 }
 
 class ChainFilter {
@@ -19,8 +19,8 @@ class ChainFilter {
     // MARK: - Properties
     
     weak var delegate: ChainFilterDelegate?
-    var originalImage: UIImage?
-    var processedImage: UIImage? {
+    var originalImage: CIImage!
+    var processedImage: CIImage? {
         didSet {
             delegate?.imageDidUpdate(processedImage)
         }
@@ -28,7 +28,6 @@ class ChainFilter {
     
     private var filters = [CIFilter]()
     private var indices = [String: Int]()
-    private var originalCIImage: CIImage!
     
     // MARK: - Initializers
     
@@ -45,9 +44,9 @@ class ChainFilter {
     // MARK: - Interface Methods
     
     func setImage(_ image: UIImage) {
-        self.originalImage = image
-        self.originalCIImage = CIImage(image: image)
-        self.filters.first?.setValue(self.originalCIImage, forKey: "inputImage")
+        let ciimage = CIImage(image: image)
+        self.originalImage = ciimage
+        self.filters.first?.setValue(ciimage, forKey: "inputImage")
         self.updateImage()
     }
     
@@ -81,8 +80,8 @@ class ChainFilter {
         }
 
         let final = filters.last?.outputImage ?? CIImage.empty()
-        let outputImage = context.createCGImage(final, from: self.originalCIImage.extent)!
+        let outputImage = context.createCGImage(final, from: self.originalImage.extent)!
         
-        self.processedImage = UIImage(cgImage: outputImage)
+        self.processedImage = CIImage(cgImage: outputImage)
     }
 }
