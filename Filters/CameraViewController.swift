@@ -70,7 +70,6 @@ extension CameraViewController: ImagePickerDelegate {
     }
 }
 
-
 /*
  class EditingViewController: UIViewController, MTKViewDelegate {
      @IBOutlet weak var slider: UISlider!

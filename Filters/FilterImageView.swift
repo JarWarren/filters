@@ -13,6 +13,10 @@ protocol FilterImageViewDelegate: AnyObject {
     func didReleaseImageView()
 }
 
+/**
+ Subclass of UIImageView that listens for touches and notifies its delegate.
+ Will not function unless `isUserInteractionEnabled` is manually set to `true`.
+ */
 class FilterImageView: UIImageView {
     
     weak var delegate: FilterImageViewDelegate?
