@@ -8,25 +8,29 @@
 
 import UIKit
 
+/// Methods for a PhotoPicker to notify its delegate when it is ready to be presented or when the user has selected an image/cancelled.
 protocol PhotoPickerDelegate: AnyObject {
     func didFinishPicking(image: UIImage?)
     func readyToPresent(_ viewController: UIViewController)
 }
 
+// TOOD: let user decide whether it's editing mode or not
+
 class PhotoPicker: NSObject, UINavigationControllerDelegate {
+    
+    // MARK: - Properties
     
     weak var delegate: PhotoPickerDelegate?
     var imagePickerController = UIImagePickerController()
+    
+    // MARK: - Initializers
     
     override init() {
         super.init()
         self.imagePickerController.delegate = self
     }
     
-    private func didFinishPicking(image: UIImage?) {
-        imagePickerController.dismiss(animated: true)
-        delegate?.didFinishPicking(image: image)
-    }
+    // MARK: - Interface Methods
     
     func present(from view: UIView) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -67,6 +71,13 @@ class PhotoPicker: NSObject, UINavigationControllerDelegate {
         }
         
         self.delegate?.readyToPresent(sheet)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func didFinishPicking(image: UIImage?) {
+        imagePickerController.dismiss(animated: true)
+        delegate?.didFinishPicking(image: image)
     }
 }
 

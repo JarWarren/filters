@@ -8,12 +8,14 @@
 
 import CoreImage
 
+/// Enumeration of all available filters in the app.
 enum Filter: String {
     case hue
     case sharpness
     case temperature
     case vibrance
     
+    /// Returns a newly initialized CIFilter for the given filter name.
     func ciFilter() -> CIFilter? {
         switch self {
         case .hue:
@@ -40,6 +42,19 @@ enum Filter: String {
             return "inputTargetNeutral"
         case .vibrance:
             return "inputAmount"
+        }
+    }
+    
+    func initialValue() -> Any {
+        switch self {
+        case .hue:
+            return Float(0)
+        case .sharpness:
+            return Float(0.4)
+        case .temperature:
+            return CIVector(x: CGFloat(6500))
+        case .vibrance:
+            return Float(0)
         }
     }
     
