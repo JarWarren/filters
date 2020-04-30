@@ -13,7 +13,7 @@ class CameraViewController: UIViewController {
     
     @IBOutlet weak var filterImageView: FilterImageView!
     
-    var imagePicker: ImagePicker!
+    let photoPicker = PhotoPicker()
     let chain = ChainFilter(filters: .temperature,
                                 .vibrance,
                                 .hue)
@@ -22,13 +22,13 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         
         filterImageView.delegate = self
-        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        photoPicker.delegate = self
         chain.setImage(#imageLiteral(resourceName: "sample0"))
         chain.delegate = self
     }
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
-        imagePicker.present(from: self.view)
+        photoPicker.present(from: self.view)
     }
     
     @IBAction func temperatureSliderValueChanged(_ sender: UISlider) {
@@ -62,8 +62,13 @@ extension CameraViewController: ChainFilterDelegate {
     }
 }
 
-extension CameraViewController: ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
+extension CameraViewController: PhotoPickerDelegate {
+    
+    func readyToPresent(_ viewController: UIViewController) {
+        present(viewController, animated: true)
+    }
+    
+    func didFinishPicking(image: UIImage?) {
         if let image = image {
             chain.setImage(image)
         }

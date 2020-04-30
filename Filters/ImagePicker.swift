@@ -95,13 +95,18 @@ extension ImagePicker: UINavigationControllerDelegate {
 
 protocol PhotoPickerDelegate: AnyObject {
     func didFinishPicking(image: UIImage?)
-    func present(_ viewController: UIViewController)
+    func readyToPresent(_ viewController: UIViewController)
 }
 
-class PhotoPicker: NSObject {
+class PhotoPicker: NSObject, UINavigationControllerDelegate {
     
     weak var delegate: PhotoPickerDelegate?
     var imagePickerController = UIImagePickerController()
+    
+    override init() {
+        super.init()
+        self.imagePickerController.delegate = self
+    }
     
     private func didFinishPicking(image: UIImage?) {
         imagePickerController.dismiss(animated: true)
@@ -115,7 +120,7 @@ class PhotoPicker: NSObject {
             let action = UIAlertAction(title: "Take Photo", style: .default) { [weak self] (_) in
                 guard let picker = self?.imagePickerController else { return }
                 self?.imagePickerController.sourceType = .camera
-                self?.delegate?.present(picker)
+                self?.delegate?.readyToPresent(picker)
             }
             sheet.addAction(action)
         }
@@ -124,7 +129,7 @@ class PhotoPicker: NSObject {
             let action = UIAlertAction(title: "Photo Library", style: .default) { [weak self] (_) in
                 guard let picker = self?.imagePickerController else { return }
                 self?.imagePickerController.sourceType = .photoLibrary
-                self?.delegate?.present(picker)
+                self?.delegate?.readyToPresent(picker)
             }
             sheet.addAction(action)
         }
@@ -133,7 +138,7 @@ class PhotoPicker: NSObject {
             let action = UIAlertAction(title: "Camera Roll", style: .default) { [weak self] (_) in
                 guard let picker = self?.imagePickerController else { return }
                 self?.imagePickerController.sourceType = .savedPhotosAlbum
-                self?.delegate?.present(picker)
+                self?.delegate?.readyToPresent(picker)
             }
             sheet.addAction(action)
         }
@@ -146,18 +151,18 @@ class PhotoPicker: NSObject {
             sheet.popoverPresentationController?.permittedArrowDirections = [.down, .up]
         }
         
-        self.delegate?.present(sheet)
+        self.delegate?.readyToPresent(sheet)
     }
 }
 
 extension PhotoPicker: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        delegate?.didFinishPicking(image: nil)
+        didFinishPicking(image: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let imageSource: UIImagePickerController.InfoKey = picker.allowsEditing ? .editedImage : .originalImage
         let image = info[imageSource] as? UIImage
-        delegate?.didFinishPicking(image: image)
+        didFinishPicking(image: image)
     }
 }
