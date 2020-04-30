@@ -16,7 +16,8 @@ class CameraViewController: UIViewController {
     let photoPicker = PhotoPicker()
     let chain = ChainFilter(filters: .temperature,
                                 .vibrance,
-                                .hue)
+                                .hue,
+                                .sharpness)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class CameraViewController: UIViewController {
     
     @IBAction func hueSliderValueChanged(_ sender: UISlider) {
         chain.updateFilter(.hue, value: sender.value)
+    }
+    
+    @IBAction func sharpnessSliderValueChanged(_ sender: UISlider) {
+        chain.updateFilter(.sharpness, value: sender.value)
     }
     
 }

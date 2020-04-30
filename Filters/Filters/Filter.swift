@@ -10,6 +10,7 @@ import CoreImage
 
 enum Filter: String {
     case hue
+    case sharpness
     case temperature
     case vibrance
     
@@ -17,6 +18,9 @@ enum Filter: String {
         switch self {
         case .hue:
             return CIFilter(name: "CIHueAdjust")
+            
+        case .sharpness:
+            return CIFilter(name: "CISharpenLuminance")
             
         case .temperature:
             return CIFilter(name: "CITemperatureAndTint")
@@ -30,6 +34,8 @@ enum Filter: String {
         switch self {
         case .hue:
             return "inputAngle"
+        case .sharpness:
+            return "inputSharpness"
         case .temperature:
             return "inputTargetNeutral"
         case .vibrance:
@@ -40,6 +46,8 @@ enum Filter: String {
     func updatedValue(_ value: Float) -> Any {
         switch self {
         case .hue:
+            return value
+        case .sharpness:
             return value
         case .temperature:
             return CIVector(x: CGFloat(value))
