@@ -110,6 +110,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="JO6-Ph-iep">
+                        <barButtonItem key="leftBarButtonItem" systemItem="undo" id="dsc-Ns-cg6">
+                            <connections>
+                                <action selector="undoButtonTapped:" destination="BYZ-38-t0r" id="2rF-rR-34w"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="k5L-4r-hVU">
                             <connections>
                                 <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="Eh4-8Y-9UQ"/>
@@ -118,6 +123,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterImageView" destination="xpL-lq-PoH" id="hsc-pK-XlX"/>
+                        <outlet property="hueSlider" destination="5eg-iB-TD4" id="2BJ-fU-A3V"/>
+                        <outlet property="sharpnessSlider" destination="XKq-cd-M32" id="jvI-5p-BUQ"/>
+                        <outlet property="temperatureSlider" destination="xVq-Vr-11K" id="fb6-jn-gFF"/>
+                        <outlet property="vibranceSlider" destination="61c-Jc-TR2" id="3Di-un-ikD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
