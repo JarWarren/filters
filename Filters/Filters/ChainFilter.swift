@@ -9,11 +9,17 @@
 import UIKit
 import Metal
 
-/// Method to display an image after it has been process by a ChainFilter.
+
+/// Method to display an image after it has been processed by a ChainFilter.
 protocol ChainFilterDelegate: AnyObject {
     func imageDidUpdate(_ image: UIImage?)
 }
 
+/**
+ Wrapper class around a series of CIFilters.
+ Pass one or more `Filter` into the initializer and conform to `ChainFilterDelegate`.
+ Call `setImage(_:)` to begin processing a `UIImage`.
+ */
 class ChainFilter {
     
     // MARK: - Properties

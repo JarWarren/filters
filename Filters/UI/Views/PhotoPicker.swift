@@ -14,8 +14,8 @@ protocol PhotoPickerDelegate: AnyObject {
     func readyToPresent(_ viewController: UIViewController)
 }
 
+/// Wrapper around `UIImagePickerController` which handles presentation and fetching the image.
 // TOOD: let user decide whether it's editing mode or not
-
 class PhotoPicker: NSObject, UINavigationControllerDelegate {
     
     // MARK: - Properties
