@@ -20,7 +20,11 @@ protocol FilterImageViewDelegate: AnyObject {
  */
 class FilterImageView: UIImageView {
     
+    // MARK: - Properties
+    
     weak var delegate: FilterImageViewDelegate?
+    
+    // MARK: - Override Methods
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.didPressImageView()

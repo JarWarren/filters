@@ -8,13 +8,14 @@
 
 import UIKit
 
-/// Methods for observing updates to a PhotoPicker.
+/// Methods for a PhotoPicker to notify its delegate when it is ready to be presented or when the user has selected an image/cancelled.
 protocol PhotoPickerDelegate: AnyObject {
     func didFinishPicking(image: UIImage?)
     func readyToPresent(_ viewController: UIViewController)
 }
 
 /// Wrapper around `UIImagePickerController` which handles presentation and fetching the image.
+// TOOD: let user decide whether it's editing mode or not
 class PhotoPicker: NSObject, UINavigationControllerDelegate {
     
     // MARK: - Properties

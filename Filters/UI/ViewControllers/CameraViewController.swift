@@ -12,6 +12,7 @@ import Metal
 class CameraViewController: UIViewController {
     
     // MARK: - Outlets
+
     @IBOutlet weak var filterImageView: FilterImageView!
     @IBOutlet weak var temperatureSlider: UISlider!
     @IBOutlet weak var vibranceSlider: UISlider!
@@ -27,6 +28,8 @@ class CameraViewController: UIViewController {
                             .sharpness)
     
     // MARK: - Lifecycle Methods
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

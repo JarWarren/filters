@@ -9,7 +9,8 @@
 import UIKit
 import Metal
 
-/// Method for observing updates to the image being processed by a ChainFilter.
+
+/// Method to display an image after it has been processed by a ChainFilter.
 protocol ChainFilterDelegate: AnyObject {
     func imageDidUpdate(_ image: UIImage?)
 }
