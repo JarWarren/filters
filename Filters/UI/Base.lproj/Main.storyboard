@@ -30,13 +30,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7s6-Fg-jjs">
-                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="59"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6500" minValue="3500" maxValue="14000" translatesAutoresizingMaskIntoConstraints="NO" id="xVq-Vr-11K">
-                                                <rect key="frame" x="56.5" y="0.0" width="311.5" height="60"/>
+                                                <rect key="frame" x="72.5" y="0.0" width="295.5" height="60"/>
                                                 <connections>
                                                     <action selector="temperatureSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ciw-Wx-2By"/>
                                                 </connections>
@@ -47,13 +47,13 @@
                                         <rect key="frame" x="0.0" y="67" width="366" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxz-pv-lyx">
-                                                <rect key="frame" x="0.0" y="0.0" width="35.5" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="59"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="61c-Jc-TR2">
-                                                <rect key="frame" x="41.5" y="0.0" width="326.5" height="60"/>
+                                                <rect key="frame" x="53" y="0.0" width="315" height="60"/>
                                                 <connections>
                                                     <action selector="vibranceSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="GGN-DF-nUH"/>
                                                 </connections>
@@ -64,13 +64,13 @@
                                         <rect key="frame" x="0.0" y="134" width="366" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GP-vw-kpz">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="21.5" height="59"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-iB-TD4">
-                                                <rect key="frame" x="22" y="0.0" width="346" height="60"/>
+                                                <rect key="frame" x="27.5" y="0.0" width="340.5" height="60"/>
                                                 <connections>
                                                     <action selector="hueSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1h6-Vq-Fys"/>
                                                 </connections>
@@ -81,13 +81,13 @@
                                         <rect key="frame" x="0.0" y="201" width="366" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharpness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdU-5l-uuS">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="59"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.40000000000000002" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="XKq-cd-M32">
-                                                <rect key="frame" x="48" y="0.0" width="320" height="60"/>
+                                                <rect key="frame" x="61.5" y="0.0" width="306.5" height="60"/>
                                                 <connections>
                                                     <action selector="sharpnessSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z0b-cm-1Zb"/>
                                                 </connections>
@@ -110,11 +110,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="JO6-Ph-iep">
-
                         <barButtonItem key="leftBarButtonItem" systemItem="undo" id="dsc-Ns-cg6">
                             <connections>
                                 <action selector="undoButtonTapped:" destination="BYZ-38-t0r" id="2rF-rR-34w"/>
-
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="k5L-4r-hVU">
@@ -125,12 +123,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterImageView" destination="xpL-lq-PoH" id="hsc-pK-XlX"/>
-
                         <outlet property="hueSlider" destination="5eg-iB-TD4" id="2BJ-fU-A3V"/>
                         <outlet property="sharpnessSlider" destination="XKq-cd-M32" id="jvI-5p-BUQ"/>
                         <outlet property="temperatureSlider" destination="xVq-Vr-11K" id="fb6-jn-gFF"/>
                         <outlet property="vibranceSlider" destination="61c-Jc-TR2" id="3Di-un-ikD"/>
-
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
